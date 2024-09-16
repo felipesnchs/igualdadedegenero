@@ -1,0 +1,411 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
+
+/* Global CSS */
+:root {
+  --clr-dark: #100818;
+  --clr-light: #eef2f6;
+  --clr-accent: #ef4462;
+  --clr-green: rgb(81, 161, 78);
+
+  --ff-poppins: 'Poppins', sans-serif;
+
+  --fs-h1: 4.5rem;
+  --fs-h2: 3.5rem;
+  --fs-h3: 2.5rem;
+  --fs-h4: 1.5rem;
+  --fs-h5: 1.125rem;
+  --fs-body: 1rem;
+  --fs-small: 0.9rem;
+}
+
+@media (max-width: 1600px) {
+  :root {
+    --fs-h1: 3rem;
+    --fs-h2: 2rem;
+    --fs-h3: 1.25rem;
+    --fs-h4: 1rem;
+    --fs-h5: 0.975rem;
+    --fs-body: 0.875rem;
+    --fs-small: 0.775rem;
+  }
+}
+
+@media (max-width: 425px) {
+  :root {
+    --fs-h1: 2rem;
+    --fs-h2: 1.8rem;
+    --fs-h3: 1rem;
+    --fs-h4: 0.8rem;
+    --fs-h5: 0.775rem;
+    --fs-body: 0.675rem;
+    --fs-small: 0.575rem;
+  }
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  line-height: 1.6;
+  word-spacing: 1.4px;
+  font-family: var(--ff-poppins);
+  font-size: var(--fs-body);
+  background-color: var(--clr-dark);
+  color: var(--clr-light);
+}
+
+button {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  display: inline-block;
+  background: none;
+  cursor: pointer;
+  font-family: var(--ff-poppins);
+  text-transform: capitalize;
+}
+
+img {
+  pointer-events: none;
+  user-select: none;
+}
+
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+h1 {
+  font-size: var(--fs-h1);
+  font-family: var(--ff-poppins);
+}
+
+h2 {
+  font-size: var(--fs-h2);
+  font-family: var(--ff-poppins);
+}
+
+h3 {
+  font-size: var(--fs-h3);
+  font-family: var(--ff-poppins);
+}
+
+h4 {
+  font-size: var(--fs-h4);
+  font-family: var(--ff-poppins);
+}
+
+h5 {
+  font-size: var(--fs-h5);
+  font-family: var(--ff-poppins);
+}
+
+p {
+  word-spacing: 1.4px;
+  font-family: var(--ff-poppins);
+  font-weight: 300;
+}
+
+.btn-bg {
+  font-size: var(--fs-h5);
+  font-weight: 700;
+  text-decoration: none;
+  padding: 1em 2.25em;
+  color: var(--clr-dark);
+  background-color: var(--clr-accent);
+  border: 1px solid var(--clr-accent);
+  transition: all 0.3s;
+}
+
+.btn-bg:hover,
+.btn-bg:focus {
+  background-color: var(--clr-light);
+  border: 1px solid var(--clr-light);
+}
+
+.btn-border {
+  font-size: var(--fs-h5);
+  font-weight: 700;
+  text-decoration: none;
+  padding: 1em 2.25em;
+  color: var(--clr-accent);
+  background-color: transparent;
+  border: 1px solid var(--clr-accent);
+  transition: all 0.3s;
+}
+
+.btn-border:hover,
+.btn-border:focus {
+  background-color: rgba(97, 218, 251, 0.1);
+}
+
+.lg-container {
+  width: 90%;
+  margin: 0 auto;
+}
+
+.md-container {
+  width: 80%;
+  margin: 0 auto;
+}
+
+.sm-container {
+  width: 65%;
+  margin: 0 auto;
+}
+
+/* Calendar CSS */
+.calendar-title {
+  text-align: center;
+  line-height: 1;
+}
+
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(25em, 1fr));
+  justify-items: center;
+}
+
+.month {
+  text-align: center;
+  margin: 0;
+  color: var(--clr-accent);
+}
+
+.calendar-week {
+  display: grid;
+  grid-template-columns: repeat(7, 3em);
+  justify-items: center;
+  grid-gap: 0.5em;
+}
+
+.calendar-days {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  grid-template-rows: repeat(6, 1fr);
+  text-align: center;
+  grid-gap: 0.5em;
+}
+
+.days {
+  color: var(--clr-dark);
+  background-color: var(--clr-light);
+  cursor: pointer;
+  user-select: none;
+}
+
+.days:hover {
+  transform: scale(1.1);
+}
+
+.january-empty {
+  grid-column-start: span 5;
+}
+
+.april-empty {
+  grid-column-start: span 4;
+}
+
+.may-empty {
+  grid-column-start: span 6;
+}
+
+.june-empty {
+  grid-column-start: span 2;
+}
+
+.july-empty {
+  grid-column-start: span 4;
+}
+
+.august-empty {
+  display: none;
+}
+
+.september-empty {
+  grid-column-start: span 3;
+}
+
+.october-empty {
+  grid-column-start: span 5;
+}
+
+.november-empty {
+  grid-column-start: span 1;
+}
+
+.december-empty {
+  grid-column-start: span 3;
+}
+
+.canadian-icon {
+  color: var(--clr-accent);
+}
+
+.legend {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: var(--fs-h1);
+}
+
+.legend-holiday-parent,
+.legend-weekend-parent,
+.legend-edited-parent {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-right: 1%;
+}
+
+.legend-holiday {
+  width: 48px;
+  height: 25px;
+  background-color: var(--clr-accent);
+}
+
+.legend-weekends {
+  width: 48px;
+  height: 25px;
+  background-color: #8aa6c1;
+}
+
+.legend-edited {
+  width: 48px;
+  height: 25px;
+  background-color: rgb(81, 161, 78);
+}
+
+.legend-name {
+  margin: 0;
+  min-width: 5em;
+  text-align: center;
+}
+
+.holiday {
+  color: var(--clr-accent);
+}
+
+.weekends {
+  color: #8aa6c1;
+}
+
+.edited {
+  color: rgb(81, 161, 78);
+}
+
+.modal {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(16, 8, 24, 0.3);
+  z-index: 999;
+  display: grid;
+  justify-items: center;
+  align-items: center;
+  color: var(--clr-dark);
+  backdrop-filter: blur(0.5rem);
+}
+
+.modal-box {
+  width: 60%;
+  height: auto;
+  padding: 1em 2em;
+  background-color: var(--clr-light);
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.modal-header-title {
+  margin: 0;
+}
+
+.modal-header-close-btn {
+  font-size: var(--fs-h4);
+}
+
+.modal-h4-holiday {
+  margin-bottom: 0;
+}
+
+.modal-h4-holiday-title {
+  color: var(--clr-accent);
+}
+
+.modal-h4-holiday-information-title {
+  margin-bottom: 0.5em;
+}
+
+.modal-information {
+  margin: 0;
+  opacity: 0.7;
+  max-width: 40em;
+}
+
+.moon {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 7em;
+  margin: 0 auto 1em auto;
+}
+
+
+
+
+
+
+
+/* CSS para formatar as notícias em cards */
+.news-card {
+  background-color: var(--clr-light);
+  color: var(--clr-dark);
+  padding: 1.5em;
+  margin: 1em 0;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.news-card:hover {
+  transform: scale(1.02);
+}
+
+.news-card a {
+  color: var(--clr-accent);
+  text-decoration: none;
+  font-weight: 700;
+}
+
+.news-card a:hover {
+  text-decoration: underline;
+}
+
+h2 {
+  color: var(--clr-accent);
+  text-align: center;
+  font-size: var(--fs-h2);
+  margin-top: 2em;
+}
+
+#newsFeed {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
